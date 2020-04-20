@@ -2,45 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.boardPrograms.web.board.boardsMapper">
-	<resultMap type="hashmap" id="boardMap" />
-	<!-- <resultMap id="accessMap" type="com.boardPrograms.web.board.model.AccessVO"> -->
-	<!-- 	<result property="CampID" column="CAMP_ID" javaType="java.lang.String" jdbcType='VARCHAR'></result>
+	<!-- <resultMap type="hashmap" id="boardMap" /> -->
+	<resultMap id="accessMap" type="com.boardPrograms.web.board.model.Params">
+		<result property="CampID" column="CAMP_ID" javaType="java.lang.String" jdbcType='VARCHAR'></result>
 		<result property="sWorkSect" column="CAMP_STAT_CD"></result>
-		<result property="sCallListName" column="SCENARIO_NAME"></result>
-		<result property="sPreNext" column="CAMP_NAME" javaType="java.lang.String" jdbcType="VARCHAR"></result>
-		<result property="iSequence" column="CAMP_COUNT" javaType="int" jdbcType="INTEGER"></result>
-		<result property="sFieldName" column="GRP_VDN" javaType="java.lang.String" jdbcType="VARCHAR"></result>
-		<result property="sAccount" column="GRP_NAME" javaType="java.lang.String" jdbcType="VARCHAR"></result>
-		<result property="sText" column="TR_NAME" javaType="java.lang.String" jdbcType="VARCHAR"></result>
-		<result property="sFilterSect" column="CALLLIST_NAME" javaType="java.lang.String" jdbcType="VARCHAR"></result>
-	</resultMap> -->
+		<result property="sCallListName" column="sCalllist_Name"></result>
+		<result property="sPreNext" column="sPre_Next" javaType="java.lang.String" jdbcType="VARCHAR"></result>
+		<result property="iSequence" column="iSequence" javaType="int" jdbcType="INTEGER"></result>
+		<result property="sFieldName" column="sFieldName" javaType="java.lang.String" jdbcType="VARCHAR"></result>
+		<result property="sAccount" column="sAccount" javaType="java.lang.String" jdbcType="VARCHAR"></result>
+		<result property="sText" column="sText" javaType="java.lang.String" jdbcType="VARCHAR"></result>
+		<result property="sFilterSect" column="sFilterSect" javaType="java.lang.String" jdbcType="VARCHAR"></result>
+	</resultMap>
 	
-	<!-- 	<parameterMap type="hashmap" id="ParamMap">
-		<parameter property="com.boardPrograms.web.board.model.AccessVO" mode="OUT" javaType="java.sql.ResultSet" jdbcType="CURSOR" resultMap="accessMap"/>
-	</parameterMap> -->
-	
-	<!-- 	s
-	<settings>
-        <setting name="jdbcTypeForNull" value="VARCHAR" />
-     </settings>
-	 -->
-	 
-	<!-- <parameterMap type="com.boardPrograms.web.board.model.Params" id="accessVoMap">
-		<parameter property="AccessVO" mode="OUT" javaType="java.sql.ResultSet" jdbcType="CURSOR" resultMap="accessMap" />
-		<parameter property="AccessVO" mode="OUT" jdbcType="CURSOR" resultMap="accessMap" />
-	</parameterMap> -->
-	
-	<!-- <select id="getAccessList" resultMap="accessMap" resultType="com.boardPrograms.web.board.model.Params"  statementType="CALLABLE" parameterType="com.boardPrograms.web.board.model.Params">
-		{call "SP_ACS_CAMP_INFO"('ref_result',
-		#{CampID, javaType=String, jdbcType=VARCHAR}, 
-		#{sWorkSect, javaType=String, jdbcType=VARCHAR}, 
-		#{sCallListName, javaType=String, jdbcType=VARCHAR}, 
-		#{sPreNext}, ${iSequence}, #{sFieldName}, #{sAccount}, #{sText},
-		#{sFilterSect})
-		}
-	</select> -->
-	
-	<select id="getAccessList" statementType="CALLABLE" resultType="map" parameterType="map" useCache="true">
+	<select id="getAccessList" statementType="CALLABLE" resultType="hashmap" parameterType="hashmap" useCache="true">
 		{call "SP_ACS_CAMP_INFO"('result',
 		#{CAMP_ID, mode=IN, javaType=String, jdbcType=VARCHAR}, 
 		#{CAMP_STAT_CD, mode=IN, javaType=String, jdbcType=VARCHAR}, 

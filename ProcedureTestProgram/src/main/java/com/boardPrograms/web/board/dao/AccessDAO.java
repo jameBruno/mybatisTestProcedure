@@ -1,4 +1,4 @@
-package com.boardPrograms.web.board.dao;C
+package com.boardPrograms.web.board.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +41,7 @@ public interface AccessDAO {
 	
 	//public List<Map<String, String>> executeProcPostgreSQL(String queryId, Map<String, Object> param);
 	
-	public <T>List<T> executeProcPostgreSQL(String queryId, Map<String, Object> param, Class<T> clazz);
+	public <T>List<T> executeProcPostgreSQL(String queryId, Map<String, Object> param);
 	
 	Cursor<Object> getAccessListCursor(Map<String, Object> param);
 	

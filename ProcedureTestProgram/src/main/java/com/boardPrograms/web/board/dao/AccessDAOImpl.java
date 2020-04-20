@@ -71,9 +71,9 @@ public class AccessDAOImpl implements AccessDAO {
 	}
 	
 	@Override
-	public <T> List<T> executeProcPostgreSQL(String queryId, Map<String, Object> param, Class<T> clazz) {
-		sqlSession.getMapper(AccessDAO.class);
-		return sqlSession.selectOne("com.boardPrograms.web.board.boarsMapper.getAccessList", param);
+	public <T> List<T> executeProcPostgreSQL(String queryId, Map<String, Object> param) {
+		List<T> resultList = sqlSession.selectList(queryId, param);
+		return resultList;
 	}
 	
 	
